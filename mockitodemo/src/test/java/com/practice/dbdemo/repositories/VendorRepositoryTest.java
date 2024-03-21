@@ -22,7 +22,7 @@ class VendorRepositoryTest {
     @BeforeEach
     void setUp() {
 
-        vendor = new Vendor(2L,"Amazon",
+        vendor = new Vendor(2L, "Amazon",
                 "USA", "xxxxx");
         vendorRepository.save(vendor);
 
@@ -36,8 +36,7 @@ class VendorRepositoryTest {
     // Test case SUCCESS
 
     @Test
-    void testFindByVendorName_Found()
-    {
+    void testFindByVendorName_Found() {
         List<Vendor> vendorList = vendorRepository.findByVendorName("Amazon");
         assertThat(vendorList.get(0).getVendorId()).isEqualTo(vendor.getVendorId());
         assertThat(vendorList.get(0).getVendorAddress())
@@ -46,8 +45,7 @@ class VendorRepositoryTest {
 
     // Test case FAILURE
     @Test
-    void testFindByVendorName_NotFound()
-    {
+    void testFindByVendorName_NotFound() {
         List<Vendor> vendorList = vendorRepository.findByVendorName("GCP");
         assertThat(vendorList.isEmpty()).isTrue();
     }
