@@ -3,6 +3,7 @@ package com.practice.dbdemo.controller;
 import com.practice.dbdemo.model.Vendor;
 import com.practice.dbdemo.response.ResponseHandler;
 import com.practice.dbdemo.service.VendorService;
+import com.practice.tdd.utils.PhoneNumberValidator;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,6 +40,10 @@ public class VendorController
     @PostMapping("/")
     public String createVendorDetails(@RequestBody Vendor vendor)
     {
+        PhoneNumberValidator phoneNumberValidator=new PhoneNumberValidator();
+        if(!phoneNumberValidator.test(vendor.getVendorPhoneNumber()))
+            return "Vendor Phone not correct";
+
         vendorService.createVendor(vendor);
         return "Vendor Created Successfully";
     }
