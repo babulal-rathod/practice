@@ -30,14 +30,14 @@ public class VendorServiceImpl implements VendorService {
     }
 
     @Override
-    public String deleteVendor(Long VendorId) {
+    public String deleteVendor(String VendorId) {
         // More Business Logic
         vendorRepository.deleteById(VendorId);
         return "Success";
     }
 
     @Override
-    public Vendor getVendor(Long VendorId) {
+    public Vendor getVendor(String VendorId) {
         // More Business Logic
         if(vendorRepository.findById(VendorId).isEmpty())
             throw new VendorNotFoundException("Requested Vendor does not exist");

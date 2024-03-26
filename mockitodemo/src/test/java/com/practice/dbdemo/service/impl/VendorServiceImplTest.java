@@ -30,7 +30,7 @@ class VendorServiceImplTest {
     void setUp() {
         autoCloseable = MockitoAnnotations.openMocks(this);
         vendorService = new VendorServiceImpl(vendorRepository);
-        vendor = new Vendor(1L, "Amazon",
+        vendor = new Vendor("1", "Amazon",
                 "USA", "xxxxx");
     }
 
@@ -64,7 +64,7 @@ class VendorServiceImplTest {
 
         doAnswer(Answers.CALLS_REAL_METHODS).when(vendorRepository)
                 .deleteById(any());
-        assertThat(vendorService.deleteVendor(1L)).isEqualTo("Success");
+        assertThat(vendorService.deleteVendor("1")).isEqualTo("Success");
     }
 
     @Test
@@ -72,9 +72,9 @@ class VendorServiceImplTest {
         mock(Vendor.class);
         mock(VendorRepository.class);
 
-        when(vendorRepository.findById(1L)).thenReturn(Optional.ofNullable(vendor));
+        when(vendorRepository.findById("1")).thenReturn(Optional.ofNullable(vendor));
 
-        assertThat(vendorService.getVendor(1L).getVendorName())
+        assertThat(vendorService.getVendor("1").getVendorName())
                 .isEqualTo(vendor.getVendorName());
     }
 

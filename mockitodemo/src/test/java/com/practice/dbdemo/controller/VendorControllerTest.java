@@ -32,9 +32,9 @@ class VendorControllerTest {
 
     @BeforeEach
     void setUp() {
-        vendorOne = new Vendor(1L, "Vendor1",
+        vendorOne = new Vendor("1000", "Vendor1",
                 "VendorAdd1", "xxxxx");
-        vendorTwo = new Vendor(2L, "Vendor2",
+        vendorTwo = new Vendor("2000", "Vendor2",
                 "VendorAdd2", "yyyyy");
         vendorList.add(vendorOne);
         vendorList.add(vendorTwo);
@@ -47,8 +47,8 @@ class VendorControllerTest {
 
     @Test
     void getVendorDetails() throws Exception {
-        when(vendorService.getVendor(1L)).thenReturn(vendorOne);
-        this.mockMvc.perform(get("/vendor/" + "1")).andDo(print())
+        when(vendorService.getVendor("1000")).thenReturn(vendorOne);
+        this.mockMvc.perform(get("/vendor/" + "1000")).andDo(print())
                 .andExpect(status().isOk());
     }
 
@@ -86,9 +86,9 @@ class VendorControllerTest {
 
     @Test
     void deleteVendorDetails() throws Exception {
-        when(vendorService.deleteVendor(1L))
+        when(vendorService.deleteVendor("1000"))
                 .thenReturn("Vendor Deleted Successfully");
-        this.mockMvc.perform(delete("/vendor/" + "1"))
+        this.mockMvc.perform(delete("/vendor/" + "1000"))
                 .andDo(print()).andExpect(status().isOk());
     }
 }

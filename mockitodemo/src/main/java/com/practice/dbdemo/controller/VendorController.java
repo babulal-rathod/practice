@@ -24,7 +24,7 @@ public class VendorController
     // Read Specific Vendor Details from DB
     @GetMapping("/{vendorId}")
 
-    public ResponseEntity<Object> getVendorDetails(@PathVariable("vendorId") Long vendorId)
+    public ResponseEntity<Object> getVendorDetails(@PathVariable("vendorId") String vendorId)
     {
         return ResponseHandler.responseBuilder("Requested Vendor Details are given here",
                 HttpStatus.OK, vendorService.getVendor(vendorId));
@@ -56,7 +56,7 @@ public class VendorController
     }
 
     @DeleteMapping("/{vendorId}")
-    public String deleteVendorDetails(@PathVariable("vendorId") Long vendorId)
+    public String deleteVendorDetails(@PathVariable("vendorId") String vendorId)
     {
         vendorService.deleteVendor(vendorId);
         return "Vendor Deleted Successfully";

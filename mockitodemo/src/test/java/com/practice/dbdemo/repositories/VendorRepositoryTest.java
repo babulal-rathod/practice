@@ -22,7 +22,7 @@ class VendorRepositoryTest {
     @BeforeEach
     void setUp() {
 
-        vendor = new Vendor(2L, "Amazon",
+        vendor = new Vendor("2000", "Amazon",
                 "USA", "xxxxx");
         vendorRepository.save(vendor);
 
